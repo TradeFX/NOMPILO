@@ -201,13 +201,60 @@ table.blueTable tfoot .links a{
   padding: 2px 8px;
   border-radius: 5px;
 }
+body {
+    background: black;
+}
+
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #17D4FE;
+    font-size: 30px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+
+
+}		  
 	  </style>
 	  <div class="columns">
   <ul class="price"><p><p><p>
     <li class="header">Probono Shares</li>
     <li><blink><strong><font size="15"> 156.6</font></strong></blink> 0.00(0.0%)<div class="arrow-down"><p><p><p></div></li>
   </ul>
-</div>
+<script>
+	function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+    
+    setTimeout(showTime, 1000);
+    
+}
+
+showTime();
+</script>
+</div><br><div id="MyClockDisplay" class="clock"></div>
 	  <!--Widget End-->
 	  <p><strong>Data for last week:</strong>
 	  <!--table start-->
